@@ -1,0 +1,47 @@
+Jaykumar_Assessment
+
+->For Example table
+
+
+1) Create Table
+-> CREATE TABLE product (
+  PRO_ID INT,
+  PRO_NAME VARCHAR(70),
+  PRO_PRICE DECIMAL(10,2),
+  PRO_COM INT
+);
+
+2) Insert values
+->INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (101, 'Mother Board', 3200.00, 15);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (102, 'Key Board', 450.00, 16);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (103, 'ZIP drive', 250.00, 14);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (104, 'Speaker', 550.00, 16);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (105, 'Monitor', 5000.00, 11);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (106, 'DVD drive', 900.00, 12);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (107, 'CD drive', 800.00, 12);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (108, 'Printer', 2600.00, 13);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (109, 'Refill cartridge', 350.00, 13);
+INSERT INTO product (PRO_ID, PRO_NAME, PRO_PRICE, PRO_COM) VALUES (110, 'Mouse', 250.00, 12);
+
+Queries...
+
+● Write sql query to find the items whose prices are higher than or equal 250rs. Order the result by product price in descending, then product name in ascending. 
+Return pro_name and pro_price
+-> SELECT pro_name, pro_price 
+	FROM product 
+        WHERE pro_price >= 250.00 
+        ORDER BY pro_price DESC, pro_name ASC;
+
+● Write a sql query to find the cheapest item. Return pro_name and pro_price.
+-> SELECT pro_name, pro_price 
+       FROM product 
+       WHERE pro_price = (SELECT MIN(pro_price) FROM product);
+
+● Write the sql query to calculate the average price of the items for each company. Return average price and company code.
+-> SELECT AVG(pro_price) AS avg_price, pro_com AS company_code 
+       FROM product 
+       GROUP BY pro_com;
+
+● Write the sql query to find the average total for all the product mention in the table.
+-> SELECT AVG(pro_price) AS avg_total 
+       FROM product;
